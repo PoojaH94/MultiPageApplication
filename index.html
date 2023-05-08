@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    label{
+        display: block;
+
+    }
+</style>
+<body>
+    <form>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+
+        </div>
+        <div>
+            <label for="email">Email
+            </label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div>
+            <label for="password">Password
+            </label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div>
+            <label for="confirmPassword">confirmPassword
+            </label>
+            <input type="confirmPassword" name="confirmPassword" id="confirmPassword">
+        </div>
+        <br>
+        <input type="submit">
+        
+    </form>
+    <script>
+        let form = document.querySelector('form');
+        form.addEventListener("submit", validateForm)
+        let signupData=[]
+        function validateForm(e)
+        {
+            e.preventDefault()
+            let name = document.querySelector('#name');
+            let email = document.querySelector('#email');
+            let password = document.querySelector('#password');
+            let confirmPassword = document.querySelector('#confirmPassword');
+            let user = {
+                name: name.value,
+                email: email.value,
+                password: password.value,
+                confirmPassword: confirmPassword
+            }
+
+            signupData.push(user)
+            let data = JSON.stringify(signupData)
+            localStorage.setItem("signup",data)
+            console.log(signupData)
+        alert('signed up successfully');
+       window.location.href = "./login.html"
+        }
+        </script>
+</body>
+</html>
